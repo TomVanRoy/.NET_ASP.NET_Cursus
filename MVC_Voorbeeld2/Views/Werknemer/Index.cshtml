@@ -2,4 +2,47 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h1>Index</h1>
+<h2>Countdown</h2>
+@{
+    var getal = 10;
+    while (getal > 0)
+    {
+        <p>@getal</p>
+        getal--;
+    }
+}
+<p>@(1 + 2 * 5 + 0.5)</p>
+<h2>Countup</h2>
+@{
+    for (int teller = 0; teller < 10; teller++)
+    {
+        <p>@teller</p>
+    }
+}
+<h2>Kansspel</h2>
+@if (new Random().Next(1, 11) == 7)
+{
+    <text>Het is zeven</text>
+    @: Je hebt geluk
+    }
+else
+{
+    <text>Het is geen zeven</text>
+    @: Een andere keer misschien
+    }
+<h2>Fibonacci-reeks</h2>
+@{
+    uint VorigGetal = 0;
+    uint HuidigGetal = 1;
+    uint Totaal;
+    <p>@VorigGetal</p>
+    <p>@HuidigGetal</p>
+    for (int i = 0; i < 10; i++)
+    {
+        Totaal = VorigGetal + HuidigGetal;
+        VorigGetal = HuidigGetal;
+        HuidigGetal = Totaal;
+        <p>@Totaal</p>
+    }
+}

@@ -1,0 +1,17 @@
+﻿@using MVC_BierenApplication.Models;
+@model List<Bier>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Alle Bieren</h2>
+@foreach (Bier bier in Model)
+{
+    var url = Url.Action("Verwijderen", "Bier", new { ID = bier.ID });
+    <p>
+        @Html.DisplayFor(m => bier.ID). @bier.Naam (@Html.DisplayFor(m => bier.Alcohol))
+        <a href="@url">
+            <img src="~/Images/delete.png" alt="delete" />
+        </a>
+    </p>
+}
