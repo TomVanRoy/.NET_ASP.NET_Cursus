@@ -1,0 +1,19 @@
+﻿@using MVC_Voorbeeld3.Models;
+@model EnumGeslacht
+@Html.DropDownList("",
+    new SelectListItem[]
+    {
+        new SelectListItem()
+        {
+            Text = "Mannelijk",
+            Value =EnumGeslacht.Man.ToString(),
+            Selected = Model == EnumGeslacht.Man
+        },
+        new SelectListItem()
+        {
+            Text = "Vrouwelijk",
+            Value =EnumGeslacht.Vrouw.ToString(),
+            Selected = Model == EnumGeslacht.Vrouw
+        },
+    }
+)

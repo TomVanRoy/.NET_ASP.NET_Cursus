@@ -50,7 +50,7 @@ namespace MVC_Voorbeeld3.Controllers
             ViewBag.Tijdstip = resultaat;
             return View();
             */
-            return Redirect("~/Filiaal");
+            return Redirect("~/Persoon");
         }
 
         public ActionResult Wissen()

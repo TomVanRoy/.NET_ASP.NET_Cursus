@@ -18,7 +18,9 @@
             <th>Gehuwd</th>
             <th>Opmerkingen</th>
             <th>Geslacht</th>
+            <th>Adres</th>
             <th>Verwijderen</th>
+            <th>Wijzigen</th>
         </tr>
     </thead>
     <tbody>
@@ -35,12 +37,20 @@
                 <td>@Html.DisplayFor(m => persoon.Gehuwd)</td>
                 <td>@Html.DisplayFor(m => persoon.Opmerkingen)</td>
                 <td>@Html.DisplayFor(m => persoon.Geslacht)</td>
+                <td>@Html.DisplayFor(m => persoon.Adres)</td>
                 <td>
                     <a href="@Url.Action("VerwijderForm", "Persoon", new { ID = persoon.ID })">
                         <img src="~/Images/delete.png" alt="delete" />
+                    </a>
+                </td>
+                <td>
+                    <a href="@Url.Action("EditForm", "Persoon", new { ID = persoon.ID })">
+                        <img src="~/Images/edit.png" alt="edit" />
                     </a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+@Html.ActionLink("Opslag", "Opslag", null, new { @class = "btn btn-primary" })
+@Html.ActionLink("Persoon toevoegen", "Toevoegen", "Persoon", null, new { @class = "btn btn-primary" })

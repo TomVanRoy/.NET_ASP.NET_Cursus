@@ -1,6 +1,6 @@
 ﻿body {
-    padding-top: 50px;
     padding-bottom: 20px;
+    padding-top: 50px;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -9,8 +9,8 @@
     padding-right: 15px;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
+/* Override the default bootstrap behavior where horizontal description lists
+   will truncate terms that are too long to fit in the left column
 */
 .dl-horizontal dt {
     white-space: normal;
@@ -20,5 +20,33 @@
 input,
 select,
 textarea {
+    display: block;
+    margin-bottom: 10px;
     max-width: 280px;
+}
+
+/* Style for validation helpers */
+.field-validation-error,
+.validation-summary-errors,
+.validation-summary-error {
+    color: #ff0000;
+}
+
+.field-validation-valid,
+.validation-summary-valid {
+    display: none;
+}
+
+.input-validation-error {
+    background-color: #ffeeee;
+    border: 1px solid #ff0000;
+}
+
+.validation-summary-error {
+    font-weight: bold;
+}
+
+input[type='checkbox'],
+input[type='radio'] {
+    display: inline;
 }

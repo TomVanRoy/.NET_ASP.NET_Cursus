@@ -71,6 +71,22 @@ namespace MVC_Voorbeeld3.Services
             }
         };
 
+        internal void Update(Persoon p)
+        {
+            personen[p.ID] = p;
+        }
+
+        public void Add(Persoon p)
+        {
+            p.ID = personen.Keys.Max() + 1;
+            personen.Add(p.ID, p);
+        }
+
+        public void Delete(int id)
+        {
+            personen.Remove(id);
+        }
+
         public List<Persoon> FindAll()
         {
             return personen.Values.ToList();
@@ -81,9 +97,23 @@ namespace MVC_Voorbeeld3.Services
             return personen[id];
         }
 
-        public void Delete(int id)
+        public void Opslag(decimal vanWedde, decimal totWedde, decimal percentage)
         {
-            personen.Remove(id);
+            foreach (var p in (from persoon in personen.Values
+                               where persoon.Wedde >= vanWedde && persoon.Wedde <= totWedde
+                               select persoon)
+                    )
+            {
+                p.Wedde *= (100 + percentage) / 100;
+            }
+        }
+
+        public List<Persoon> VanTotWedde(decimal van, decimal tot)
+        {
+            return (from persoon in personen.Values
+                    where persoon.Wedde >= van && persoon.Wedde <= tot
+                    orderby persoon.Wedde
+                    select persoon).ToList();
         }
     }
 }

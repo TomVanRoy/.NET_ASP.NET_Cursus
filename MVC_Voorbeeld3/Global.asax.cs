@@ -19,6 +19,8 @@ namespace MVC_Voorbeeld3
             Application.Lock();
             Application.Add("aantalBezoeken", 0);
             Application.UnLock();
+            ModelBinders.Binders.Add(typeof(decimal), new DecimalModelBinder());
+            ModelBinders.Binders.Add(typeof(decimal?), new DecimalModelBinder());
         }
 
         protected void Session_Start()
