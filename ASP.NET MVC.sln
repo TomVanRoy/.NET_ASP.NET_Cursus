@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC_BierenApplication", "MV
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC_Voorbeeld3", "MVC_Voorbeeld3\MVC_Voorbeeld3.csproj", "{939D93A1-74B7-4B0E-8678-7FE75BE37747}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC_Tuincentrum", "MVC_Tuincentrum\MVC_Tuincentrum.csproj", "{306F578D-8872-4755-AF79-64E193914FCC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{939D93A1-74B7-4B0E-8678-7FE75BE37747}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{939D93A1-74B7-4B0E-8678-7FE75BE37747}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{939D93A1-74B7-4B0E-8678-7FE75BE37747}.Release|Any CPU.Build.0 = Release|Any CPU
+		{306F578D-8872-4755-AF79-64E193914FCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{306F578D-8872-4755-AF79-64E193914FCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{306F578D-8872-4755-AF79-64E193914FCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{306F578D-8872-4755-AF79-64E193914FCC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

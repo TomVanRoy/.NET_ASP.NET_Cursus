@@ -5,12 +5,26 @@ using System.Web;
 using System.Web.Mvc;
 using MVC_Voorbeeld3.Services;
 using MVC_Voorbeeld3.Models;
+using System.Globalization;
 
 namespace MVC_BierenApplication.Controllers
 {
     public class PersoonController : Controller
     {
         private PersoonService persoonService = new PersoonService();
+
+        [HttpPost]
+        public ActionResult Edit(Persoon p)
+        {
+            persoonService.Update(p);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult EditForm(int id)
+        {
+            return View(persoonService.FindByID(id));
+        }
 
         // GET: Persoon
         public ActionResult Index()
@@ -43,13 +57,6 @@ namespace MVC_BierenApplication.Controllers
             }
         }
 
-        [HttpGet]
-        public ActionResult VanTotWedde()
-        {
-            var form = new VanTotWeddeViewModel();
-            return View(form);
-        }
-
         [HttpPost]
         public ActionResult Toevoegen(Persoon p)
         {
@@ -64,17 +71,42 @@ namespace MVC_BierenApplication.Controllers
             }
         }
 
-        [HttpPost]
-        public ActionResult Edit(Persoon p)
+        [HttpGet]
+        public ActionResult Toevoegen()
         {
-            persoonService.Update(p);
-            return RedirectToAction("Index");
+            var persoon = new Persoon();
+            persoon.Geslacht = EnumGeslacht.Man;
+            return View(persoon);
+        }
+
+        public JsonResult ValidateDOB(string Geboren)
+        {
+            DateTime parsedDOB;
+            System.Diagnostics.Debug.WriteLine("First If fires: " + DateTime.TryParseExact(Geboren, "yyyy-mm-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out parsedDOB));
+            System.Diagnostics.Debug.WriteLine("parsedDOB" + parsedDOB);
+            System.Diagnostics.Debug.WriteLine("Now:" + DateTime.Now);
+
+            if (!DateTime.TryParseExact(Geboren, "yyyy-mm-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out parsedDOB))
+            {
+                return Json("Gelieve een geldige datum in te voeren (dd/mm/jjjj) !",
+                JsonRequestBehavior.AllowGet);
+            }
+            else if (DateTime.Now < parsedDOB)
+            {
+                return Json("Voer een datum uit het verleden in !",
+                JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
         }
 
         [HttpGet]
-        public ActionResult EditForm(int id)
+        public ActionResult VanTotWedde()
         {
-            return View(persoonService.FindByID(id));
+            var form = new VanTotWeddeViewModel();
+            return View(form);
         }
 
         [HttpGet]
@@ -92,14 +124,6 @@ namespace MVC_BierenApplication.Controllers
         {
             persoonService.Delete(id);
             return RedirectToAction("Index");
-        }
-
-        [HttpGet]
-        public ActionResult Toevoegen()
-        {
-            var persoon = new Persoon();
-            persoon.Geslacht = EnumGeslacht.Man;
-            return View(persoon);
         }
 
         [HttpGet]

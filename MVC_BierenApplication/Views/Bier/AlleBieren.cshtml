@@ -5,13 +5,21 @@
 }
 
 <h2>Alle Bieren</h2>
-@foreach (Bier bier in Model)
-{
-    var url = Url.Action("Verwijderen", "Bier", new { ID = bier.ID });
-    <p>
-        @Html.DisplayFor(m => bier.ID). @bier.Naam (@Html.DisplayFor(m => bier.Alcohol))
-        <a href="@url">
-            <img src="~/Images/delete.png" alt="delete" />
-        </a>
-    </p>
-}
+<table class="table table-striped">
+    <tbody>
+        @foreach (Bier bier in Model.OrderBy(b => b.ID))
+        {
+            var url = Url.Action("Verwijderen", "Bier", new { ID = bier.ID });
+            <tr>
+                <td>@Html.DisplayFor(m => bier.ID)</td>
+                <td>@bier.Naam</td>
+                <td>@Html.DisplayFor(m => bier.Alcohol)</td>
+                <td>
+                    <a href="@url">
+                        <img src="~/Images/delete.png" alt="delete" />
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

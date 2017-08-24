@@ -12,6 +12,27 @@ namespace MVC_BierenApplication.Controllers
     {
         private BierService bierService = new BierService();
 
+        [HttpGet]
+        public ActionResult Add()
+        {
+            var bier = new Bier();
+            return View(bier);
+        }
+
+        [HttpPost]
+        public ActionResult Add(Bier b)
+        {
+            if (this.ModelState.IsValid)
+            {
+                bierService.Add(b);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(b);
+            }
+        }
+
         // GET: Bier
         public ActionResult Index()
         {

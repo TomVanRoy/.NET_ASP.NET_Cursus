@@ -20,6 +20,8 @@
 input,
 select,
 textarea {
+    display: block;
+    margin-bottom: 10px;
     max-width: 280px;
 }
 
@@ -37,4 +39,13 @@ textarea {
 
 .rood {
     color: red;
+}
+
+.validation-summary-errors {
+    color: #ff0000;
+}
+
+.input-validation-error {
+    background-color: #ffdddd;
+    border: 1px solid #ff0000;
 }

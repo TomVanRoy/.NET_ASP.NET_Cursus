@@ -19,6 +19,12 @@ namespace MVC_BierenApplication.Services
             bieren[5] = new Bier { ID = 5, Alcohol = 0.0F, Naam = "Hoegaarden 0,0" };
         }
 
+        internal void Add(Bier b)
+        {
+            b.ID = bieren.Keys.Max() + 1;
+            bieren.Add(b.ID, b);
+        }
+
         public List<Bier> FindAll()
         {
             return bieren.Values.ToList();

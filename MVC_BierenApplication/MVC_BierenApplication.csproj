@@ -173,6 +173,7 @@
     <Content Include="Views\Bier\Verwijderen.cshtml" />
     <Content Include="Views\Bier\Verwijderd.cshtml" />
     <Content Include="Views\Bier\AlleBieren.cshtml" />
+    <Content Include="Views\Bier\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
