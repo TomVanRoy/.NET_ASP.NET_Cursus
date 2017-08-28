@@ -3,8 +3,34 @@
 @{
     ViewBag.Title = "Index";
 }
-
-@Html.Partial("AlleBieren")
+<h2>Alle Bieren</h2>
+<table class="table table-striped">
+    <tbody>
+        @foreach (Bier bier in Model.OrderBy(b => b.BierNr))
+        {
+            var url = Url.Action("Verwijderen", "Bier", new { ID = bier.BierNr });
+            <tr>
+                <td>@Html.DisplayFor(m => bier.BierNr)</td>
+                <td>@bier.Naam</td>
+                <td>
+                    @if (bier.Alcohol != null)
+                    {
+                        @Html.DisplayFor(m => bier.Alcohol)
+                    }
+                    else
+                    {
+                        <span>Niet gekend</span>
+                    }
+                </td>
+                <td>
+                    <a href="@url">
+                        <img src="~/Images/delete.png" alt="delete" />
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
 <a href="@Url.Action("Add", "Bier")">
     Toevoegen
 </a>

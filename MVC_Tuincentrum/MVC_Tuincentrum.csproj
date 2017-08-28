@@ -134,9 +134,16 @@
     <Compile Include="Controllers\LeverancierController.cs" />
     <Compile Include="Controllers\PlantController.cs" />
     <Compile Include="Controllers\SoortController.cs" />
+    <Compile Include="Controllers\StatistiekController.cs" />
     <Compile Include="DecimalModelBinder.cs" />
+    <Compile Include="Filters\StatistiekActionFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Headers.fr.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Headers.fr.resx</DependentUpon>
     </Compile>
     <Compile Include="Models\Leverancier.cs">
       <DependentUpon>Tuincentrum.tt</DependentUpon>
@@ -166,6 +173,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Tuincentrum.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\Teksten.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Teksten.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Teksten.fr.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Teksten.fr.resx</DependentUpon>
+    </Compile>
     <Compile Include="Services\SoortService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -175,6 +192,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\default.jpg" />
+    <Content Include="Images\francais.png" />
+    <Content Include="Images\nederlands.png" />
+    <Content Include="Images\tuincentrum.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Properties\PublishProfiles\LocalIIS.pubxml" />
@@ -212,8 +233,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <EntityDeploy Include="Models\Tuincentrum.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -238,9 +257,13 @@
     <Content Include="Views\Plant\Edit.cshtml" />
     <Content Include="Views\Plant\Index.cshtml" />
     <Content Include="Views\Soort\ZoekForm.cshtml" />
+    <Content Include="Views\Plant\Uploaden.cshtml" />
+    <Content Include="Views\Statistiek\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\Fotos\" />
+    <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -252,6 +275,22 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Headers.fr.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Headers.fr.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Teksten.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Teksten.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Teksten.fr.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Teksten.fr.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

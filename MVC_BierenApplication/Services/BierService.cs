@@ -10,34 +10,39 @@ namespace MVC_BierenApplication.Services
     {
         private static Dictionary<int, Bier> bieren = new Dictionary<int, Bier>();
 
-        static BierService()
-        {
-            bieren[1] = new Bier { ID = 1, Alcohol = 9.5F, Naam = "Boerken" };
-            bieren[2] = new Bier { ID = 2, Alcohol = 4.9F, Naam = "Hoegaarden" };
-            bieren[3] = new Bier { ID = 3, Alcohol = 6.5F, Naam = "Leffe Bruin" };
-            bieren[4] = new Bier { ID = 4, Alcohol = 5.4F, Naam = "Palm" };
-            bieren[5] = new Bier { ID = 5, Alcohol = 0.0F, Naam = "Hoegaarden 0,0" };
-        }
-
         internal void Add(Bier b)
         {
-            b.ID = bieren.Keys.Max() + 1;
-            bieren.Add(b.ID, b);
+            using (var db = new MVCBierenEntities())
+            {
+                db.Bieren.Add(b);
+                db.SaveChanges();
+            }
         }
 
         public List<Bier> FindAll()
         {
-            return bieren.Values.ToList();
+            using (var db = new MVCBierenEntities())
+            {
+                return db.Bieren.ToList();
+            }
         }
 
-        public Bier Read(int id)
+        public Bier Read(int ID)
         {
-            return bieren[id];
+            using (var db = new MVCBierenEntities())
+            {
+                return db.Bieren.Find(ID);
+            }
         }
 
-        public void Delete(int id)
+        public void Delete(int ID)
         {
-            bieren.Remove(id);
+            using (var db = new MVCBierenEntities())
+            {
+                var bier = db.Bieren.Find(ID);
+                db.Bieren.Remove(bier);
+                db.SaveChanges();
+            }
         }
     }
 }

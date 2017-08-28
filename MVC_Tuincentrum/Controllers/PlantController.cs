@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -7,34 +8,13 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MVC_Tuincentrum.Models;
+using MVC_Tuincentrum.Filters;
 
 namespace MVC_Tuincentrum.Controllers
 {
     public class PlantController : Controller
     {
         private MVCTuinCentrumEntities db = new MVCTuinCentrumEntities();
-
-        // GET: Plant
-        public ActionResult Index()
-        {
-            var planten = db.Planten.Include(p => p.Leveranciers).Include(p => p.Soorten);
-            return View(planten.ToList());
-        }
-
-        // GET: Plant/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Plant plant = db.Planten.Find(id);
-            if (plant == null)
-            {
-                return HttpNotFound();
-            }
-            return View(plant);
-        }
 
         // GET: Plant/Create
         public ActionResult Create()
@@ -60,6 +40,47 @@ namespace MVC_Tuincentrum.Controllers
 
             ViewBag.Levnr = new SelectList(db.Leveranciers, "LevNr", "Naam", plant.Levnr);
             ViewBag.SoortNr = new SelectList(db.Soorten, "SoortNr", "Naam", plant.SoortNr);
+            return View(plant);
+        }
+
+        // GET: Plant/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Plant plant = db.Planten.Find(id);
+            if (plant == null)
+            {
+                return HttpNotFound();
+            }
+            return View(plant);
+        }
+
+        // POST: Plant/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Plant plant = db.Planten.Find(id);
+            db.Planten.Remove(plant);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        // GET: Plant/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Plant plant = db.Planten.Find(id);
+            if (plant == null)
+            {
+                return HttpNotFound();
+            }
             return View(plant);
         }
 
@@ -98,30 +119,38 @@ namespace MVC_Tuincentrum.Controllers
             return View(plant);
         }
 
-        // GET: Plant/Delete/5
-        public ActionResult Delete(int? id)
+        [HttpPost]
+        public ActionResult FotoUpload(int id)
         {
-            if (id == null)
+            if (Request.Files.Count > 0)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                var foto = Request.Files[0];
+                var aboluutPadNaarDir = this.HttpContext.Server.MapPath("~/Images/Fotos");
+                var aboluutPadNaarFoto = Path.Combine(aboluutPadNaarDir, id + ".jpg");
+                foto.SaveAs(aboluutPadNaarFoto);
             }
-            Plant plant = db.Planten.Find(id);
-            if (plant == null)
-            {
-                return HttpNotFound();
-            }
-            return View(plant);
+            return RedirectToAction("Index");
         }
 
-        // POST: Plant/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ContentResult ImageOrDefault(int id)
         {
-            Plant plant = db.Planten.Find(id);
-            db.Planten.Remove(plant);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            var imagePath = "/Images/Fotos/" + id + ".jpg";
+            var imageSrc = System.IO.File.Exists(HttpContext.Server.MapPath("~/" + imagePath)) ? imagePath : "/Images/default.jpg";
+            return Content(imageSrc);
+        }
+
+        [StatistiekActionFilter]
+        // GET: Plant
+        public ActionResult Index()
+        {
+            var planten = db.Planten.Include(p => p.Leveranciers).Include(p => p.Soorten);
+            return View(planten.ToList());
+        }
+
+        [HttpGet]
+        public ActionResult Uploaden(int id)
+        {
+            return View(id);
         }
 
         protected override void Dispose(bool disposing)

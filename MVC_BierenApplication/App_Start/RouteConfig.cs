@@ -15,8 +15,8 @@ namespace MVC_BierenApplication
 
             routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                url: "{controller}/{action}/{BierNr}",
+                defaults: new { controller = "Home", action = "Index", BierNr = UrlParameter.Optional }
             );
         }
     }

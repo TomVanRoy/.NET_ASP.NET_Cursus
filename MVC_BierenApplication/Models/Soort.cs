@@ -12,15 +12,18 @@ namespace MVC_BierenApplication.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Bier
+    public partial class Soort
     {
-        public int BierNr { get; set; }
-        public string Naam { get; set; }
-        public int BrouwerNr { get; set; }
-        public int SoortNr { get; set; }
-        public Nullable<float> Alcohol { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Soort()
+        {
+            this.Bieren = new HashSet<Bier>();
+        }
     
-        public virtual Brouwer Brouwers { get; set; }
-        public virtual Soort Soorten { get; set; }
+        public int SoortNr { get; set; }
+        public string Naam { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Bier> Bieren { get; set; }
     }
 }

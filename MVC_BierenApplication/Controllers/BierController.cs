@@ -11,6 +11,7 @@ namespace MVC_BierenApplication.Controllers
     public class BierController : Controller
     {
         private BierService bierService = new BierService();
+        private MVCBierenEntities db = new MVCBierenEntities();
 
         [HttpGet]
         public ActionResult Add()
@@ -41,11 +42,11 @@ namespace MVC_BierenApplication.Controllers
         }
 
         [HttpPost]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int BierNr)
         {
-            var bier = bierService.Read(id);
+            var bier = bierService.Read(BierNr);
             this.TempData["bier"] = bier;
-            bierService.Delete(id);
+            bierService.Delete(BierNr);
             return RedirectToAction("Verwijderd");
         }
 
@@ -55,9 +56,9 @@ namespace MVC_BierenApplication.Controllers
             return View(bier);
         }
 
-        public ActionResult Verwijderen(int id)
+        public ActionResult Verwijderen(int BierNr)
         {
-            var bier = bierService.Read(id);
+            var bier = bierService.Read(BierNr);
             return View(bier);
         }
     }
