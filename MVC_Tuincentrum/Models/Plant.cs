@@ -21,7 +21,7 @@ namespace MVC_Tuincentrum.Models
         public string Kleur { get; set; }
         public decimal VerkoopPrijs { get; set; }
     
-        public virtual Leverancier Leveranciers { get; set; }
-        public virtual Soort Soorten { get; set; }
+        public virtual Leverancier Leverancier { get; set; }
+        public virtual Soort Soort { get; set; }
     }
 }

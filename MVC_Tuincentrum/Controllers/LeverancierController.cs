@@ -10,9 +10,28 @@ using MVC_Tuincentrum.Models;
 
 namespace MVC_Tuincentrum.Controllers
 {
+    // [OverrideActionFilters]
     public class LeverancierController : Controller
     {
         private MVCTuinCentrumEntities db = new MVCTuinCentrumEntities();
+
+        [Route("Leveranciers/{postnr?}")]
+        public ActionResult FindLeveranciersMetPostNr(string postnr)
+        {
+            if (postnr == null)
+            {
+                return View("Index", db.Leveranciers.ToString());
+            }
+            else
+            {
+                List<Leverancier> leveranciersLijst = new List<Leverancier>();
+                leveranciersLijst = (from leverancier in db.Leveranciers
+                                     where leverancier.PostNr == postnr
+                                     select leverancier).ToList();
+                ViewBag.postnr = postnr;
+                return View(leveranciersLijst);
+            }
+        }
 
         // GET: Leverancier
         public ActionResult Index()
@@ -20,6 +39,7 @@ namespace MVC_Tuincentrum.Controllers
             return View(db.Leveranciers.ToList());
         }
 
+        // [OverrideActionFilters]
         // GET: Leverancier/Details/5
         public ActionResult Details(int? id)
         {

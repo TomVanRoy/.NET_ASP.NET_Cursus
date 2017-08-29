@@ -130,6 +130,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LeverancierController.cs" />
     <Compile Include="Controllers\PlantController.cs" />
@@ -140,6 +141,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="QueryStringConstraint.cs" />
     <Compile Include="Resources\Headers.fr.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -184,6 +186,7 @@
       <DependentUpon>Teksten.fr.resx</DependentUpon>
     </Compile>
     <Compile Include="Services\SoortService.cs" />
+    <Compile Include="ValuesConstraint.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -259,6 +262,16 @@
     <Content Include="Views\Soort\ZoekForm.cshtml" />
     <Content Include="Views\Plant\Uploaden.cshtml" />
     <Content Include="Views\Statistiek\Index.cshtml" />
+    <Content Include="Views\Shared\DatabaseError.cshtml" />
+    <Content Include="Views\Plant\FindPlantenBySoortNaam.cshtml" />
+    <Content Include="Views\Plant\FindPlantenByLeverancier.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Plant\FindPlantenVanEenKleur.cshtml" />
+    <Content Include="Views\Plant\FindPlantenBetweenPrijzen.cshtml" />
+    <Content Include="Views\Leverancier\FindLeveranciersMetPostNr.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Plant\PrijsLijst.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

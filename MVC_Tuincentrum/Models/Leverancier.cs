@@ -17,7 +17,7 @@ namespace MVC_Tuincentrum.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Leverancier()
         {
-            this.Planten = new HashSet<Plant>();
+            this.Plant = new HashSet<Plant>();
         }
     
         public int LevNr { get; set; }
@@ -27,6 +27,6 @@ namespace MVC_Tuincentrum.Models
         public string Woonplaats { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Plant> Planten { get; set; }
+        public virtual ICollection<Plant> Plant { get; set; }
     }
 }
