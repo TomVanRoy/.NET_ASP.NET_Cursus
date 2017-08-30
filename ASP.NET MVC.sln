@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC_Voorbeeld3", "MVC_Voorb
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC_Tuincentrum", "MVC_Tuincentrum\MVC_Tuincentrum.csproj", "{306F578D-8872-4755-AF79-64E193914FCC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC_Areas", "MVC_Areas\MVC_Areas.csproj", "{F2374625-0F2B-44F1-AA29-4E8BCF8A00CB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC_Security", "MVC_Security\MVC_Security.csproj", "{C41DBFD4-B3B8-4683-9145-C60CD2EC48C1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{306F578D-8872-4755-AF79-64E193914FCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{306F578D-8872-4755-AF79-64E193914FCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{306F578D-8872-4755-AF79-64E193914FCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2374625-0F2B-44F1-AA29-4E8BCF8A00CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2374625-0F2B-44F1-AA29-4E8BCF8A00CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2374625-0F2B-44F1-AA29-4E8BCF8A00CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2374625-0F2B-44F1-AA29-4E8BCF8A00CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C41DBFD4-B3B8-4683-9145-C60CD2EC48C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C41DBFD4-B3B8-4683-9145-C60CD2EC48C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C41DBFD4-B3B8-4683-9145-C60CD2EC48C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C41DBFD4-B3B8-4683-9145-C60CD2EC48C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
