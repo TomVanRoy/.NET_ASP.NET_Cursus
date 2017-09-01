@@ -1,9 +1,8 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(MVC_Security.Startup))]
-
-namespace MVC_Security
+[assembly: OwinStartupAttribute(typeof(MVC_BierenSecurity.Startup))]
+namespace MVC_BierenSecurity
 {
     public partial class Startup
     {

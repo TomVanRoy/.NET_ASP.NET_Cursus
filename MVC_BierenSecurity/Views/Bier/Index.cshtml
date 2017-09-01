@@ -1,0 +1,65 @@
+﻿@using MVC_BierenSecurity.Models;
+@model List<Bier>
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Alle Bieren</h2>
+
+<table class="table table-striped">
+    <tbody>
+        @if (User.IsInRole("Administrator"))
+        {
+            foreach (Bier bier in Model.OrderBy(b => b.BierNr))
+            {
+                var url = Url.Action("Verwijderen", "Bier", new { ID = bier.BierNr });
+                <tr>
+                    <td>@Html.DisplayFor(m => bier.BierNr)</td>
+                    <td>@bier.Naam</td>
+                    <td>
+                        @if (bier.Alcohol != null)
+                        {
+                            @Html.DisplayFor(m => bier.Alcohol)
+                        }
+                        else
+                        {
+                            <span>Niet gekend</span>
+                        }
+                    </td>
+                    <td>
+                        <a href="@url">
+                            <img src="~/Images/delete.png" alt="delete" />
+                        </a>
+                    </td>
+                </tr>
+
+            }
+        }
+        else
+        {
+            foreach (Bier bier in Model.OrderBy(b => b.BierNr))
+            {
+                <tr>
+                    <td>@Html.DisplayFor(m => bier.BierNr)</td>
+                    <td>@bier.Naam</td>
+                    <td>
+                        @if (bier.Alcohol != null)
+                        {
+                            @Html.DisplayFor(m => bier.Alcohol)
+                        }
+                        else
+                        {
+                            <span>Niet gekend</span>
+                        }
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+@if (User.IsInRole("Administrator"))
+{
+    <a href="@Url.Action("Add", "Bier")">
+        Toevoegen
+    </a>
+}

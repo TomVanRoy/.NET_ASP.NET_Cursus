@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC_Areas", "MVC_Areas\MVC_
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC_Security", "MVC_Security\MVC_Security.csproj", "{C41DBFD4-B3B8-4683-9145-C60CD2EC48C1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC_BierenSecurity", "MVC_BierenSecurity\MVC_BierenSecurity.csproj", "{11765ADE-8F94-432E-A1FE-BC107E001526}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{C41DBFD4-B3B8-4683-9145-C60CD2EC48C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C41DBFD4-B3B8-4683-9145-C60CD2EC48C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C41DBFD4-B3B8-4683-9145-C60CD2EC48C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11765ADE-8F94-432E-A1FE-BC107E001526}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11765ADE-8F94-432E-A1FE-BC107E001526}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11765ADE-8F94-432E-A1FE-BC107E001526}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11765ADE-8F94-432E-A1FE-BC107E001526}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
