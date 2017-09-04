@@ -1,0 +1,47 @@
+﻿@using MVC_BierenSecurity.Models
+@model List<Soort>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Alle soorten</h2>
+
+<table class="table table-striped">
+    <tbody>
+        @if (User.IsInRole("Administrator"))
+            {
+                foreach (Soort soort in Model.OrderBy(s => s.SoortNr))
+                {
+                    var url = Url.Action("Verwijderen", "Soort", new { ID = soort.SoortNr });
+                <tr>
+                    <td>@Html.DisplayFor(m => soort.SoortNr)</td>
+                    <td>@soort.Naam</td>
+                    <td>
+                        <a href="@url">
+                            <img src="~/Images/delete.png" alt="delete" />
+                        </a>
+                    </td>
+                </tr>
+
+            }
+        }
+        else
+        {
+            foreach (Soort soort in Model.OrderBy(s => s.SoortNr))
+            {
+                <tr>
+                    <td>@Html.DisplayFor(m => soort.SoortNr)</td>
+                    <td>@soort.Naam</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+@if (User.IsInRole("Administrator"))
+{
+    <a href="@Url.Action("Add", "Soort")>
+        Toevoegen
+    </a>
+}

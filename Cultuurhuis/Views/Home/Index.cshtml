@@ -1,0 +1,24 @@
+﻿@model List<Cultuurhuis.Models.Voorstelling>
+@using Cultuurhuis.Services
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Het Cultuurhuis <img src="~/Images/voorstellingen.png" /></h1>
+</div>
+
+<h4 class="alert alert-info">Kies een voorstellingsgenre</h4>
+
+<ul class="nav nav-pills">
+    @{
+        var genreService = new GenreService();
+        foreach (var g in genreService.FindAll().OrderBy(g => g.Naam))
+        {
+
+            <li role="presentation">
+                <a href="@Url.Action("FindByGenre", "Voorstelling", new { genreNr = g.Naam })"></a>
+            </li>
+        }
+    }
+</ul>

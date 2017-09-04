@@ -1,0 +1,13 @@
+﻿@using Cultuurhuis.Services
+<ul class="nav nav-pills">
+    @{
+        var genreService = new GenreService();
+        foreach (var g in genreService.FindAll().OrderBy(g => g.Naam))
+        {
+
+            <li role="presentation">
+                <a href="@Url.Action("FindByGenre", new { genreNr = g.GenreNr })">@g.Naam</a>
+            </li>
+        }
+    }
+</ul>

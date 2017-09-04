@@ -9,22 +9,44 @@
 </div>
 
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-3 col-sm-6">
         <h2>@Html.ActionLink("Studenten", "Index", "Student")</h2>
         <p>
             <a class="btn btn-default" href="~/Student">Naar de pagina voor studenten &raquo;</a>
         </p>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3 hidden-sm">
         <h2>@Html.ActionLink("Leraren", "Index", "Leraar")</h2>
         <p>
             <a class="btn btn-default" href="~/Leraar">Naar de pagina voor leraren &raquo;</a>
         </p>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3 col-sm-6">
         <h2>@Html.ActionLink("User administrators", "Index", "User")</h2>
         <p>
             <a class="btn btn-default" href="~/User">Naar de pagina voor user admins &raquo;</a>
         </p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Links</th>
+                    <th>Rechts</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Linksboven</td>
+                    <td>Rechtsboven</td>
+                </tr>
+                <tr>
+                    <td>Linksonder</td>
+                    <td>Rechtsonder</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>

@@ -9,12 +9,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{11765ADE-8F94-432E-A1FE-BC107E001526}</ProjectGuid>
+    <ProjectGuid>{A70C40A6-E558-429A-B5D4-BB0E9A7CD685}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MVC_BierenSecurity</RootNamespace>
-    <AssemblyName>MVC_BierenSecurity</AssemblyName>
+    <RootNamespace>Cultuurhuis</RootNamespace>
+    <AssemblyName>Cultuurhuis</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -164,52 +164,60 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AlcoholGrenzenAttribute.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\BierController.cs" />
+    <Compile Include="Controllers\GenreController.cs" />
+    <Compile Include="Controllers\KlantController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\BrouwerController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\SoortController.cs" />
+    <Compile Include="Controllers\VoorstellingController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Bier.cs">
-      <DependentUpon>Bieren.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Bieren.Context.cs">
+    <Compile Include="Models\VoorstellingProperties.cs" />
+    <Compile Include="Models\KlantProperties.cs" />
+    <Compile Include="Models\VoorstellingUitbreiding.cs" />
+    <Compile Include="Models\KlantUitbreiding.cs" />
+    <Compile Include="Models\Cultuurhuis.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Bieren.Context.tt</DependentUpon>
+      <DependentUpon>Cultuurhuis.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Bieren.cs">
-      <DependentUpon>Bieren.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Bieren.Designer.cs">
+    <Compile Include="Models\Cultuurhuis.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Bieren.edmx</DependentUpon>
+      <DependentUpon>Cultuurhuis.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\BierProperties.cs" />
-    <Compile Include="Models\BierUitbreiding.cs" />
-    <Compile Include="Models\Brouwer.cs">
-      <DependentUpon>Bieren.tt</DependentUpon>
+    <Compile Include="Models\Cultuurhuis.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Cultuurhuis.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Genre.cs">
+      <DependentUpon>Cultuurhuis.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Klant.cs">
+      <DependentUpon>Cultuurhuis.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Soort.cs">
-      <DependentUpon>Bieren.tt</DependentUpon>
+    <Compile Include="Models\Reservatie.cs">
+      <DependentUpon>Cultuurhuis.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Voorstelling.cs">
+      <DependentUpon>Cultuurhuis.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\BierService.cs" />
-    <Compile Include="Services\BrouwerService.cs" />
-    <Compile Include="Services\SoortService.cs" />
+    <Compile Include="Services\CultuurService.cs" />
+    <Compile Include="Services\KlantService.cs" />
+    <Compile Include="Services\VoorstellingService.cs" />
+    <Compile Include="Services\ReservatieService.cs" />
+    <Compile Include="Services\GenreService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -219,27 +227,31 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Images\biertempel.png" />
+    <Content Include="Images\bevestig.png" />
     <Content Include="Images\delete.png" />
-    <Content Include="Models\Bieren.Context.tt">
+    <Content Include="Images\edit.png" />
+    <Content Include="Images\mandje.png" />
+    <Content Include="Images\nieuweklant.png" />
+    <Content Include="Images\reserveren.png" />
+    <Content Include="Images\voorstellingen.png" />
+    <Content Include="Models\Cultuurhuis.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Bieren.edmx</DependentUpon>
-      <LastGenOutput>Bieren.Context.cs</LastGenOutput>
+      <DependentUpon>Cultuurhuis.edmx</DependentUpon>
+      <LastGenOutput>Cultuurhuis.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Bieren.tt">
+    <Content Include="Models\Cultuurhuis.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Bieren.edmx</DependentUpon>
-      <LastGenOutput>Bieren1.cs</LastGenOutput>
+      <DependentUpon>Cultuurhuis.edmx</DependentUpon>
+      <LastGenOutput>Cultuurhuis.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="App_Code\ContactGegevens.cshtml" />
-    <EntityDeploy Include="Models\Bieren.edmx">
+    <EntityDeploy Include="Models\Cultuurhuis.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Bieren.Designer.cs</LastGenOutput>
+      <LastGenOutput>Cultuurhuis.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Bieren.edmx.diagram">
-      <DependentUpon>Bieren.edmx</DependentUpon>
+    <Content Include="Models\Cultuurhuis.edmx.diagram">
+      <DependentUpon>Cultuurhuis.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -287,20 +299,14 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Bier\Add.cshtml" />
-    <Content Include="Views\Bier\AlleBieren.cshtml" />
-    <Content Include="Views\Bier\Index.cshtml" />
-    <Content Include="Views\Bier\Verwijderd.cshtml" />
-    <Content Include="Views\Bier\Verwijderen.cshtml" />
-    <Content Include="Views\Soort\Index.cshtml" />
-    <Content Include="Views\Soort\Verwijderen.cshtml" />
-    <Content Include="Views\Soort\Verwijderd.cshtml" />
-    <Content Include="Views\Soort\Add.cshtml" />
+    <Content Include="Views\Voorstelling\FindByGenre.cshtml" />
+    <Content Include="Views\Voorstelling\Index.cshtml" />
+    <Content Include="Views\Shared\GenrePills.cshtml" />
+    <Content Include="Views\Genre\Index.cshtml" />
+    <Content Include="Views\Voorstelling\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\BierService\" />
-    <Folder Include="Views\Leverancier\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -329,9 +335,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>20845</DevelopmentServerPort>
+          <DevelopmentServerPort>7605</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:20845/</IISUrl>
+          <IISUrl>http://localhost:7605/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

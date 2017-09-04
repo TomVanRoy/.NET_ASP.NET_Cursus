@@ -1,0 +1,16 @@
+﻿@model MVC_BierenSecurity.Models.Soort
+
+@{
+    ViewBag.Title = "Add";
+}
+
+<h2>Add</h2>
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(s => s.Naam)
+    @Html.ValidationMessageFor(s => s.Naam, "*")
+    @Html.EditorFor(s => s.Naam)
+
+    <input type="submit" value="Toevoegen" />
+    @Html.ValidationSummary()
+}

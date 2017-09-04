@@ -1,0 +1,9 @@
+﻿@model MVC_BierenSecurity.Models.Soort
+
+@{
+    ViewBag.Title = "Verwijderen";
+}
+<h2>@Model.Naam verwijderen?</h2>
+<form method="post" action="~/Soort/Delete/@Model.SoortNr">
+    <input type="submit" value="Delete" />
+</form>

@@ -1,0 +1,71 @@
+﻿@model List<Cultuurhuis.Models.Voorstelling>
+@using Cultuurhuis.Services
+@{
+    ViewBag.Title = "FindByGenre";
+}
+
+<div class="jumbotron">
+    <h1>Het Cultuurhuis <img src="~/Images/voorstellingen.png" /></h1>
+</div>
+
+<ul class="nav nav-pills">
+    @{
+        var genreService = new GenreService();
+        foreach (var g in genreService.FindAll().OrderBy(g => g.Naam))
+        {
+            if (ViewBag.genreNaam == g.Naam)
+            {
+                <li role="presentation" class="active">
+                    <a href="@Url.Action("FindByGenre", new { genreNr = g.GenreNr })">@g.Naam</a>
+                </li>
+            }
+            else
+            {
+                <li role="presentation">
+                    <a href="@Url.Action("FindByGenre", new { genreNr = g.GenreNr })">@g.Naam</a>
+                </li>
+            }
+        }
+    }
+</ul>
+@if (Model.Count != 0)
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Datum</th>
+                <th>Title</th>
+                <th>Uitvoerders</th>
+                <th>Prijs</th>
+                <th>Vrije plaatsen</th>
+                <th>Reserveren</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var voorstelling in Model)
+            {
+                <tr>
+                    <td>@voorstelling.Datum</td>
+                    <td>@voorstelling.Titel</td>
+                    <td>@voorstelling.Uitvoerders</td>
+                    <td>@voorstelling.Prijs</td>
+                    <td>@voorstelling.VrijePlaatsen</td>
+                    <td>
+                        @if (@voorstelling.VrijePlaatsen > 0)
+                        {
+                            <a href="#">Reserveren</a>
+                        }
+                        else
+                        {
+                            <p class="label label-danger">uitverkocht</p>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <h3 class="alert alert-warning">Er zijn geen voorstellingen van dit genre beschikbaar</h3>
+}
