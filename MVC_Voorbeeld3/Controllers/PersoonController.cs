@@ -26,6 +26,22 @@ namespace MVC_BierenApplication.Controllers
             return View(persoonService.FindByID(id));
         }
 
+        public ActionResult FilterPersonen(string gekozenGeslacht = "Allebei")
+        {
+            return View((object)gekozenGeslacht);
+        }
+
+        public PartialViewResult GetGefilterdePersonen(string gekozenGeslacht = "Allebei")
+        {
+            IEnumerable<Persoon> personen = persoonService.FindAll();
+            if (gekozenGeslacht != "Allebei")
+            {
+                EnumGeslacht gekozen = (EnumGeslacht)Enum.Parse(typeof(EnumGeslacht), gekozenGeslacht);
+                personen = personen.Where(p => p.Geslacht == gekozen);
+            }
+            return PartialView(personen);
+        }
+
         // GET: Persoon
         public ActionResult Index()
         {

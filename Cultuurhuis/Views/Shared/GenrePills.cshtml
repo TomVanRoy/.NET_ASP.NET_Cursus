@@ -2,11 +2,11 @@
 <ul class="nav nav-pills">
     @{
         var genreService = new GenreService();
-        foreach (var g in genreService.FindAll().OrderBy(g => g.Naam))
+        foreach (var g in genreService.FindAll().OrderBy(g => g.GenreNaam))
         {
 
             <li role="presentation">
-                <a href="@Url.Action("FindByGenre", new { genreNr = g.GenreNr })">@g.Naam</a>
+                <a href="@Url.Action("FindByGenre", new { genreNr = g.GenreNr })">@g.GenreNaam</a>
             </li>
         }
     }

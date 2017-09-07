@@ -1,24 +1,103 @@
-﻿@model List<Cultuurhuis.Models.Voorstelling>
-@using Cultuurhuis.Services
+﻿@*@model Cultuurhuis.Models.VoorstellingenViewModel*@
+@model int?
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Index";
 }
 
 <div class="jumbotron">
-    <h1>Het Cultuurhuis <img src="~/Images/voorstellingen.png" /></h1>
+    <h1>Het Cultuurhuis <img src="~/Images/voorstellingen.png" alt="voorstellingen" /></h1>
+    @if (ViewBag.mandjeTonen)
+    {
+        <p>
+            <a href="@Url.Action("Mandje", "Home")" class="btn btn-primary btn-lg">Winkelmandje &raquo;</a>
+            <a href="@Url.Action("Bevestigen", "Home")" class="btn btn-primary btn-lg">Kassa &raquo;</a>
+        </p>
+    }
 </div>
+@if (!Model.HasValue)
+{
+    <div id="kiesgenre" class="lead alert alert-info">
+        <p>Kies een voorstellingsgenre</p>
+    </div>
+}
 
-<h4 class="alert alert-info">Kies een voorstellingsgenre</h4>
+<div class="well">@Html.Action("GenreLijst", new { gekozenGenre = Model })</div>
 
-<ul class="nav nav-pills">
-    @{
-        var genreService = new GenreService();
-        foreach (var g in genreService.FindAll().OrderBy(g => g.Naam))
+<div id="lijst">
+    @if (Model.HasValue)
+    {
+        @Html.Action("GetVoorstellingenVanGenre", new { gekozenGenre = Model })
+    }
+</div>
+@*
+    @if (Model.Genre == null)
+    {
+        <p class="lead alert alert-info">Kies een voorstellingsgenre</p>
+    }
+    <ul class="nav nav-pills">
+        @foreach (var g in Model.Genres)
         {
-
-            <li role="presentation">
-                <a href="@Url.Action("FindByGenre", "Voorstelling", new { genreNr = g.Naam })"></a>
-            </li>
+            var url = Url.Action("Index", "Home", new { id = g.GenreNr });
+            if (Model.Genre != null && Model.Genre.GenreNaam.Equals(g.GenreNaam))
+            {
+                <li class="active">
+                    <a href="@url">@g.GenreNaam</a>
+                </li>
+            }
+            else
+            {
+                <li>
+                    <a href="@url">@g.GenreNaam</a>
+                </li>
+            }
+        }
+    </ul>
+    @if (Model.Genre != null)
+    {
+        <br />
+        if (Model.Voorstellingen.Count() > 0)
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Datum</th>
+                        <th>Titel</th>
+                        <th>Uitvoerders</th>
+                        <th class="rechts">Prijs</th>
+                        <th class="rechts">Vrije plaatsen</th>
+                        <th>Reserveren</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var voorstelling in Model.Voorstellingen)
+                    {
+                        <tr>
+                            <td class="col-md-2">@Html.DisplayFor(m => voorstelling.Datum)</td>
+                            <td class="col-md-3">@voorstelling.Titel</td>
+                            <td class="col-md-3">@voorstelling.Uitvoerders</td>
+                            <td class="col-md-1 rechts">@Html.DisplayFor(m => voorstelling.Prijs)</td>
+                            <td class="col-md-2 rechts">@voorstelling.VrijePlaatsen</td>
+                            @if (voorstelling.VrijePlaatsen > 0)
+                        {
+                            var urlReserveren = Url.Action("Reserveren", "Home", new { id = voorstelling.VoorstellingsNr });
+                                <td class="col-md-1">
+                                    <a href="@urlReserveren">Reserveren</a>
+                                </td>
+                            }
+                            else
+                            {
+                                <td class="col-md-1">
+                                    <span class="label label-danger">uitverkocht</span>
+                                </td>
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p class="alert alert-warning">Er zijn geen voorstellingen van dit genre beschikbaar</p>
         }
     }
-</ul>
+*@

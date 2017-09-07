@@ -24,6 +24,16 @@ namespace Cultuurhuis.Services
             }
         }
 
+        public Klant GetKlant(string naam, string paswoord)
+        {
+            using (var db = new CultuurHuisMVCEntities())
+            {
+                return (from klant in db.Klanten
+                        where klant.GebruikersNaam == naam && klant.Paswoord == paswoord
+                        select klant).FirstOrDefault();
+            }
+        }
+
         public List<Voorstelling> GetVoorstellingenByGenre(int? id)
         {
             using (var db = new CultuurHuisMVCEntities())
@@ -33,6 +43,45 @@ namespace Cultuurhuis.Services
                             orderby voorstelling.Datum
                             select voorstelling;
                 return query.ToList();
+            }
+        }
+
+        internal bool BestaatKlant(string gebruikersnaam)
+        {
+            using (var db = new CultuurHuisMVCEntities())
+            {
+                var bestaandeKlant = (from klant in db.Klanten
+                                      where klant.GebruikersNaam == gebruikersnaam
+                                      select klant).FirstOrDefault();
+                return bestaandeKlant != null;
+            }
+        }
+
+        internal void BewaarReservatie(Reservatie gelukteReservatie)
+        {
+            using (var db = new CultuurHuisMVCEntities())
+            {
+                var voorstelling = db.Voorstellingen.Find(gelukteReservatie.Plaatsen);
+                voorstelling.VrijePlaatsen -= gelukteReservatie.Plaatsen;
+                db.Reservaties.Add(gelukteReservatie);
+                db.SaveChanges();
+            }
+        }
+
+        internal Voorstelling GetVoorstelling(int id)
+        {
+            using (var db = new CultuurHuisMVCEntities())
+            {
+                return db.Voorstellingen.Find(id);
+            }
+        }
+
+        internal void VoegKlantToe(Klant nieuweKlant)
+        {
+            using (var db = new CultuurHuisMVCEntities())
+            {
+                db.Klanten.Add(nieuweKlant);
+                db.SaveChanges();
             }
         }
     }

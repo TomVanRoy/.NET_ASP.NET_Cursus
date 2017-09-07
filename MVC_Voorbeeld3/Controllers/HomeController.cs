@@ -8,6 +8,25 @@ namespace MVC_Voorbeeld3.Controllers
 {
     public class HomeController : Controller
     {
+        public PartialViewResult GetTime()
+        {
+            return PartialView(DateTime.Now);
+        }
+
+        public ActionResult About()
+        {
+            ViewBag.Message = "Your application description page.";
+
+            return View();
+        }
+
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
         public ActionResult Index()
         {
             // Sessionvariabele aanpassen
@@ -48,9 +67,9 @@ namespace MVC_Voorbeeld3.Controllers
                 Response.Cookies.Add(userCookie);
             }
             ViewBag.Tijdstip = resultaat;
-            return View();
             */
-            return Redirect("~/Persoon");
+            return View();
+            // return Redirect("~/Persoon");
         }
 
         public ActionResult Wissen()
@@ -81,20 +100,6 @@ namespace MVC_Voorbeeld3.Controllers
                 }
             }
             */
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
     }

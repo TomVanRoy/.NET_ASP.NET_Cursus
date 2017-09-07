@@ -10,10 +10,10 @@
 <table class="table table-striped">
     <tbody>
         @if (User.IsInRole("Administrator"))
+        {
+            foreach (Soort soort in Model.OrderBy(s => s.SoortNr))
             {
-                foreach (Soort soort in Model.OrderBy(s => s.SoortNr))
-                {
-                    var url = Url.Action("Verwijderen", "Soort", new { ID = soort.SoortNr });
+                var url = Url.Action("Verwijderen", "Soort", new { ID = soort.SoortNr });
                 <tr>
                     <td>@Html.DisplayFor(m => soort.SoortNr)</td>
                     <td>@soort.Naam</td>
@@ -41,7 +41,7 @@
 
 @if (User.IsInRole("Administrator"))
 {
-    <a href="@Url.Action("Add", "Soort")>
+    <a href="@Url.Action("Add", "Soort")">
         Toevoegen
     </a>
 }
